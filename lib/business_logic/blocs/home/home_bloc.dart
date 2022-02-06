@@ -22,13 +22,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeEventFirstFetch event, Emitter<HomeState> emit) async {
     var seed = Random().nextInt(10000);
     var state = HomeStateFinished();
-    state.imageCount = 10;
     state.mainImageSeed = seed;
+    state.imageCount = 10;
     for (var index = 0; index < state.imageCount; index++) {
       seed = Random().nextInt(10000);
       state.listImages.add(seed);
     }
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     _currentState = state;
     emit(state);
     return null;

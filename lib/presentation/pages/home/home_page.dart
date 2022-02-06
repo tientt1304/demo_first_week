@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                  state.imageCount = 10;
                   if (state is HomeStateFetching ||
                       state is HomeStateFinished) {
                     return ImageDisplay(
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                         seed: state.mainImageSeed);
                   }
                   context.read<HomeBloc>().add(HomeEventFirstFetch());
-                  return Image.asset('assets/images/loading.gif');
+                  return Image.asset('assets/images/loading.gif', width: _screenWidth - 32,height: _screenHeight * 0.2,);
                 }),
                 SizedBox(
                   height: _screenHeight * 0.02,
